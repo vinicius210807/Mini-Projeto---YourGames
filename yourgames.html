@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+  <title>YourGames</title>
+</head>
+
+<body>
+
+  <!-- TELA DE CADASTRO -->
+  <div id="telaCadastro">
+
+    <div class="modalCadastro">
+
+      <img class="logo" src="logo.png">
+
+      <h1>Faça seu cadastro!</h1>
+
+      <input type="text" id="usuario" placeholder="Seu nome">
+
+      <input type="text" id="usuarioimg" placeholder="URL da foto de perfil">
+
+      <button onclick="cadastro()">
+        Entrar
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+
+    <img class="logo" src="logo.png">
+
+    <input type="text" id="nome" placeholder="Nome do jogo">
+
+    <select id="plataforma">
+      <option>Playstation</option>
+      <option>Nintendo</option>
+      <option>Xbox</option>
+      <option>Pc</option>
+    </select>
+
+    <input type="number" id="nota" placeholder="Nota (0 a 10)">
+
+    <select id="status">
+      <option>Jogando</option>
+      <option>Finalizado</option>
+      <option>Platinado</option>
+      <option>Abandonado</option>
+    </select>
+
+    <input type="text" id="imagem" placeholder="URL da imagem">
+
+    <button onclick="adicionarJogo()">
+      Adicionar Jogo
+    </button>
+
+    <div class="stats" id="estatisticas">
+
+      <div class="perfil">
+        <img id="fotoPerfil" src="">
+        <h3 id="nomePerfil">📊 Estatísticas</h3>
+      </div>
+
+      <p>Total de jogos: 0</p>
+      <p>Finalizados: 0</p>
+      <p>Platinados: 0</p>
+
+    </div>
+
+  </div>
+
+  <main>
+    <div id="listaJogos"></div>
+  </main>
+
+<script>
+
+let jogos = [];
+
+// CADASTRO
+function cadastro(){
+
+  let usuario = document.getElementById("usuario").value;
+  let usuarioimg = document.getElementById("usuarioimg").value;
+
+  // ALTERA PERFIL
+  document.getElementById("nomePerfil").innerHTML =
+  `📊 Estatísticas de ${usuario}`;
+
+  document.getElementById("fotoPerfil").src = usuarioimg;
+
+  // ESCONDE A TELA
+  document.getElementById("telaCadastro").style.display = "none";
+}
+
+// ADICIONAR JOGO
+function adicionarJogo(){
+
+  let nome = document.getElementById("nome").value;
+  let plataforma = document.getElementById("plataforma").value;
+  let nota = document.getElementById("nota").value;
+  let status = document.getElementById("status").value;
+  let imagem = document.getElementById("imagem").value;
+
+  if(nome === "" || nota === ""){
+    alert("Preencha os campos!");
+    return;
+  }
+
+  let jogo = {
+    nome,
+    plataforma,
+    nota,
+    status,
+    imagem
+  };
+
+  jogos.push(jogo);
+
+  mostrarJogos();
+  atualizarEstatisticas();
+}
+
+// MOSTRAR JOGOS
+function mostrarJogos(){
+
+  let lista = document.getElementById("listaJogos");
+
+  lista.innerHTML = "";
+
+  for(let i = 0; i < jogos.length; i++){
+
+    lista.innerHTML += `
+      <div class="jogo">
+        <h3>${jogos[i].nome}</h3>
+        <p>🎮 ${jogos[i].plataforma}</p>
+        <p>⭐ ${jogos[i].nota}</p>
+        <p>📌 ${jogos[i].status}</p>
+
+        <img src="${jogos[i].imagem}">
+      </div>
+    `;
+  }
+}
+
+// ESTATÍSTICAS
+function atualizarEstatisticas(){
+
+  let total = jogos.length;
+
+  let finalizados = 0;
+  let platinados = 0;
+
+  for(let i = 0; i < jogos.length; i++){
+
+    if(jogos[i].status === "Finalizado"){
+      finalizados++;
+    }
+
+    if(jogos[i].status === "Platinado"){
+      platinados++;
+    }
+  }
+
+  document.getElementById("estatisticas").innerHTML += "";
+}
+
+</script>
+
+</body>
+</html>

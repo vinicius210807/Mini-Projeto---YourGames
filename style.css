@@ -1,0 +1,137 @@
+body {
+      font-family: "Pixelify Sans";
+      background: #1e1e1e;
+      color: white;
+      padding: 20px;
+    background-image: url("fundo.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-y: -100px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+
+.logo{
+  width: 300px;
+  height: 300px;
+  align-self: center;
+}
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      font-family: "Pixelify Sans", sans-serif;
+      justify-content: center;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    input, select, button {
+      font-family: "Pixelify Sans", sans-serif;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #075ff7;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #094fc8;
+    }
+
+    .jogo {
+      background: #2d2d2d;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+      opacity: 90%
+    }
+
+    .stats {
+      margin-top: 20px;
+      background: #333;
+      padding: 15px;
+      border-radius: 8px;
+      opacity: 90%;
+    }
+
+    img{
+        width: 570px;
+        height: 400px;
+        border-radius: 10px;
+    }
+
+    main{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    #listaJogos{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px
+    }
+
+
+.pixelify-sans-<uniquifier> {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+/* TELA DE CADASTRO */
+
+#telaCadastro{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.modalCadastro{
+  background: #2d2d2d;
+
+  padding: 30px;
+
+  border-radius: 15px;
+
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+/* PERFIL */
+
+.perfil{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#fotoPerfil{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
